@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        var search = location.search.substring(1).replaceAll("+", " ").replace('%40', '@');
+
+        function getUriData(text) {
+            var textTab = text.split("&");
+            var textTemp;
+            var data = new Array();
+            for (let i = 0; i < textTab.length; i++) {
+                textTemp = textTab[i].split("=");
+                data[2 * i] = textTemp[0];
+                data[2 * i + 1] = textTemp[1];
+            }
+            return data;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <a href="index.thml" class="logo">School No. 6</a>
+        <div class="header-right">
+            <a class="active" href="index.html">Home</a>
+            <a href="">Contact</a>
+            <a href="">Gallery</a>
+            <a href="">GitHub</a>
+            <a href="">About</a>
+        </div>
+    </header>
+    <div class="content">
+        <div class="text">
+            <h2>Thanks for signing up!</h2>
+            <p>
+                Please confirm the data you entered is correct.
+            </p>
+            <script>
+                var tab = getUriData(search);
+
+                document.write("<table>");
+                for (i = 0; i < tab.length; i += 2) {
+                    document.write("<tr><td>" + tab[i] + ":" + "</td><td>" + tab[i + 1] + "</td></td>");
+                }
+                document.write("</table>");
+            </script>
+            <button class="confirm">Confirm</button>
+        </div>
+    </div>
+</body>
+
+</html>
